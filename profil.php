@@ -45,47 +45,66 @@
     </div>
 </section>
 
-<!-- Section Struktur Organisasi -->
-<section class="py-20 bg-white">
+<!-- ============================================== -->
+<!-- SECTION STRUKTUR ORGANISASI (DESAIN BARU)      -->
+<!-- ============================================== -->
+<section class="py-24 bg-white relative">
     <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Judul Section -->
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl font-bold text-primary mb-2">Struktur Organisasi</h2>
             <p class="text-slate-500">Berdasarkan Peraturan Menteri Komunikasi dan Informatika No. 1 Tahun 2022</p>
+            <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <!-- Bagan Sederhana -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <!-- Pimpinan (Kepala Balai) - Tampil di Tengah -->
+        <div class="flex justify-center mb-16" data-aos="zoom-in">
+            <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-accent text-center w-full max-w-xs hover:-translate-y-2 transition duration-300 group">
+                <!-- Ganti foto dengan foto asli Kepala Balai jika ada -->
+                <img src="assets/img/struktur/kepala.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Kepala+Balai&background=0f172a&color=fff&size=150'" alt="Kepala Balai" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-slate-100 shadow-md group-hover:border-accent transition duration-300">
+                <h3 class="text-xl font-bold text-primary mt-4">Kepala Balai</h3>
+                <p class="text-sm text-slate-500 mt-1">Pimpinan Tertinggi UPT</p>
+                <div class="mt-4 inline-block bg-slate-100 text-slate-600 text-xs px-3 py-1 rounded-full font-semibold">Kepala Balmon SFR Kelas II</div>
+            </div>
+        </div>
+
+        <!-- Garis Penghubung Visual (Opsional, hanya di layar besar) -->
+        <div class="hidden md:block w-px h-12 bg-slate-300 mx-auto -mt-10 mb-4"></div>
+
+        <!-- Divisi & Tim Kerja -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
-            <!-- Kepala Balai -->
-            <div class="md:col-span-3 flex justify-center mb-8" data-aos="zoom-in">
-                <div class="bg-primary text-white p-6 rounded-2xl shadow-xl w-full max-w-md border-b-4 border-accent">
-                    <h3 class="text-xl font-bold">Kepala Balai Monitor SFR Kelas II</h3>
-                    <p class="text-blue-200 text-sm mt-1">Pimpinan Tertinggi UPT</p>
-                </div>
-            </div>
-
             <!-- Subbagian Umum -->
-            <div class="md:col-start-2 md:col-span-1 mb-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-slate-50 p-6 rounded-xl shadow-md border-l-4 border-secondary hover:shadow-lg transition duration-300">
-                    <h3 class="text-lg font-bold text-secondary">Subbagian Umum</h3>
-                    <p class="text-slate-500 text-sm mt-2">Perencanaan, Keuangan, Kepegawaian, Tata Usaha, & Humas</p>
-                </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/img/struktur/umum.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Subbagian+Umum&background=1e40af&color=fff&size=150'" alt="Subbagian Umum" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-blue-50 group-hover:border-secondary transition duration-300">
+                <h3 class="text-lg font-bold text-primary mt-4">Subbagian Umum</h3>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Perencanaan, Keuangan, Kepegawaian, Tata Usaha, & Humas</p>
+                <div class="mt-4 text-xs font-semibold text-secondary bg-blue-50 py-1 rounded-md">Administrasi & Manajemen</div>
             </div>
 
-            <!-- Tim Kerja (3 Kolom) -->
-            <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-                <div class="bg-slate-50 p-6 rounded-xl shadow-md border-t-4 border-secondary hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-lg font-bold text-secondary mb-2">Tim Kerja Monitoring & Penertiban SFR/APT</h3>
-                    <p class="text-slate-600 text-sm">Pengamatan, deteksi sumber pancaran, penertiban, & penegakan hukum.</p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-xl shadow-md border-t-4 border-secondary hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-lg font-bold text-secondary mb-2">Tim Kerja Sarana Prasarana & Layanan</h3>
-                    <p class="text-slate-600 text-sm">Pemeliharaan perangkat, pelayanan pengaduan, sertifikasi, & piutang BHP.</p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-xl shadow-md border-t-4 border-secondary hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-lg font-bold text-secondary mb-2">Tim Kerja Kualitas Layanan Infrastruktur Digital</h3>
-                    <p class="text-slate-600 text-sm">Pengukuran kualitas layanan, parameter teknis stasiun, & verifikasi site.</p>
-                </div>
+            <!-- Tim Kerja Monitoring -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/img/struktur/monitoring.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Monitoring+SFR&background=1e40af&color=fff&size=150'" alt="Tim Monitoring" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-blue-50 group-hover:border-secondary transition duration-300">
+                <h3 class="text-lg font-bold text-primary mt-4">Tim Monitoring & Penertiban</h3>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Pengamatan, deteksi sumber pancaran, penertiban, & penegakan hukum.</p>
+                <div class="mt-4 text-xs font-semibold text-secondary bg-blue-50 py-1 rounded-md">Operasional Lapangan</div>
+            </div>
+
+            <!-- Tim Kerja Sarana Prasarana -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                <img src="assets/img/struktur/sarana.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Sarana+Prasarana&background=1e40af&color=fff&size=150'" alt="Tim Sarana" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-blue-50 group-hover:border-secondary transition duration-300">
+                <h3 class="text-lg font-bold text-primary mt-4">Tim Sarana Prasarana & Layanan</h3>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Pemeliharaan perangkat, pelayanan pengaduan, sertifikasi, & piutang BHP.</p>
+                <div class="mt-4 text-xs font-semibold text-secondary bg-blue-50 py-1 rounded-md">Layanan Publik</div>
+            </div>
+
+            <!-- Tim Kerja Kualitas Layanan -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/img/struktur/kualitas.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Kualitas+Layanan&background=1e40af&color=fff&size=150'" alt="Tim Kualitas" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-blue-50 group-hover:border-secondary transition duration-300">
+                <h3 class="text-lg font-bold text-primary mt-4">Tim Kualitas Layanan Infrastruktur</h3>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Pengukuran kualitas layanan, parameter teknis stasiun, & verifikasi site.</p>
+                <div class="mt-4 text-xs font-semibold text-secondary bg-blue-50 py-1 rounded-md">Pengukuran & Verifikasi</div>
             </div>
 
         </div>
