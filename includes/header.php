@@ -73,16 +73,24 @@ $current_page = basename($_SERVER['PHP_SELF']);
             border-radius: 0 3px 3px 0;
         }
 
-        /* Efek untuk Wadah Logo */
+        /* Efek untuk Wadah Logo - Disesuaikan agar lebih ringkas */
         .logo-container {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            height: 48px; /* Tinggi tetap untuk wadah logo */
         }
         .logo-container:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Memastikan gambar logo tidak melebihi tinggi wadah */
+        .logo-img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -97,25 +105,27 @@ $current_page = basename($_SERVER['PHP_SELF']);
       <a href="index.php" class="flex items-center gap-4 group relative z-10">
         
         <!-- Wadah 3 Logo (KOMDIGI, DJID, BALMON) -->
+        <!-- Menggunakan h-12 (48px) dan padding px-3 -->
         <div class="logo-container px-3 py-2 rounded-xl flex items-center gap-3">
             <!-- Logo 1: KOMDIGI -->
-            <img src="assets/img/logo_komdigi.png" alt="KOMDIGI" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
+            <!-- Menggunakan h-7 (28px) agar rasio pas di dalam wadah -->
+            <img src="assets/img/logo_komdigi.png" alt="KOMDIGI" class="h-7 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
             
             <!-- Garis Pemisah -->
-            <div class="w-px h-8 bg-white/20 hidden md:block"></div>
+            <div class="w-px h-6 bg-white/20"></div>
             
             <!-- Logo 2: DJID -->
-            <img src="assets/img/logo_djid.png" alt="DJID" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
+            <img src="assets/img/logo_djid.png" alt="DJID" class="h-7 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
             
             <!-- Garis Pemisah -->
-            <div class="w-px h-8 bg-white/20 hidden md:block"></div>
+            <div class="w-px h-6 bg-white/20"></div>
             
             <!-- Logo 3: BALMON -->
-            <img src="assets/img/logo_balmon.png" alt="Balmon" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
+            <img src="assets/img/logo_balmon.png" alt="Balmon" class="h-7 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
         </div>
 
         <!-- Teks Brand -->
-        <div class="hidden sm:block">
+        <div class="hidden lg:block"> <!-- Diubah ke lg:block agar tidak sempit di tablet -->
             <span class="text-white font-extrabold text-lg tracking-wider block leading-tight group-hover:text-amber-400 transition-colors duration-300">BALMON MATARAM</span>
             <span class="text-slate-400 text-[10px] tracking-[0.3em] block font-bold">KOMDIGI</span>
         </div>
