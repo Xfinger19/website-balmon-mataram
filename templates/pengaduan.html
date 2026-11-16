@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Bagian Header Halaman -->
+<section class="relative pt-32 pb-12 bg-primary overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 50 Q 25 20, 50 50 T 100 50" fill="none" stroke="white" stroke-width="0.5"/>
+        </svg>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 text-center" data-aos="fade-down">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Lapor Gangguan Frekuensi</h1>
+        <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto">Sampaikan laporan Anda. Sistem akan otomatis mengirimkan notifikasi ke WhatsApp Petugas Balmon Mataram.</p>
+    </div>
+</section>
+
+<!-- Bagian Form & Notifikasi -->
+<section class="py-12 bg-slate-100 min-h-screen relative -mt-8">
+    <div class="max-w-3xl mx-auto px-4">
+        
+        <!-- Menampilkan Pesan Notifikasi (Flash Message) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="mb-8 p-4 rounded-xl {{ 'bg-green-100 text-green-800 border-green-500' if category == 'success' else 'bg-red-100 text-red-800 border-red-500' }} border-l-4 shadow-sm flex items-start gap-3" data-aos="fade-down">
+                    {% if category == 'success' %}
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    {% else %}
+                        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    {% endif %}
+                        <span class="font-semibold">{{ message }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Kotak Form -->
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-8 border-secondary" data-aos="fade-up" data-aos-delay="200">
+            <form action="{{ url_for('pengaduan') }}" method="POST">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Input Nama -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Pelapor / Instansi</label>
+                        <input type="text" name="nama" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Contoh: BMKG NTB" required>
+                    </div>
+                    <!-- Input Frekuensi -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Frekuensi Terganggu (MHz)</label>
+                        <input type="text" name="frekuensi" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Contoh: 150.8" required>
+                    </div>
+                </div>
+
+                <!-- Input Lokasi -->
+                <div class="mt-6">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Lokasi Gangguan</label>
+                    <input type="text" name="lokasi" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Contoh: Mataram, Lombok" required>
+                </div>
+
+                <!-- Input Deskripsi -->
+                <div class="mt-6">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Deskripsi Gangguan</label>
+                    <textarea name="deskripsi" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Jelaskan detail gangguan yang dialami..." required></textarea>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="mt-8">
+                    <button type="submit" class="w-full bg-secondary hover:bg-blue-800 text-white font-bold py-4 rounded-xl transition duration-300 shadow-lg flex justify-center items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                        Kirim Laporan
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Info Tambahan -->
+        <div class="mt-8 text-center text-sm text-slate-500" data-aos="fade-up" data-aos-delay="400">
+            <p>Laporan Anda akan ditindaklanjuti oleh Tim Monitoring SFR Balmon Mataram.</p>
+            <p class="mt-1">Jika mengalami kendala, hubungi kami via <a href="https://wa.me/6282266516166" class="text-green-600 font-semibold hover:underline">WhatsApp Pelayanan</a>.</p>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,90 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Pengaturan Dasar Body */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+}
+
+/* --- Efek Kaca (Glassmorphism) untuk Navbar --- */
+.glass-header {
+    background: rgba(15, 23, 42, 0.85); /* Latar biru gelap transparan */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Efek Kaca untuk Kartu (Card) --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* --- Efek Menu Hover Kapsul di Navbar --- */
+.nav-item-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+.nav-item-hover:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --- Garis Indikator Scroll di atas (Warna Emas) --- */
+#scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(to right, #f59e0b, #fcd34d);
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+/* --- Efek Cahaya pada Logo (Agar tidak tenggelam di background gelap) --- */
+.logo-glow {
+    filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.3));
+}
+
+/* --- Teks Gradien (Untuk Hero Section) --- */
+.text-gradient {
+    background: linear-gradient(to right, #60a5fa, #a78bfa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Animasi Melayang (Floating) --- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* --- Efek Hover pada Kartu (Terangkat dan Bayangan Membesar) --- */
+.hover-card {
+    transition: all 0.3s ease;
+}
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Animasi Kilau (Shine) untuk Tombol Lapor Gangguan --- */
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
