@@ -99,13 +99,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <!-- Wadah 3 Logo (KOMDIGI, DJID, BALMON) -->
         <div class="logo-container px-3 py-2 rounded-xl flex items-center gap-3">
             <!-- Logo 1: KOMDIGI -->
-            <img src="assets/img/logo_komdigi.jpeg" alt="KOMDIGI" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
+            <img src="assets/img/logo_komdigi.png" alt="KOMDIGI" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
             
             <!-- Garis Pemisah -->
             <div class="w-px h-8 bg-white/20 hidden md:block"></div>
             
             <!-- Logo 2: DJID -->
-            <img src="assets/img/logo_djid.jpeg" alt="DJID" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
+            <img src="assets/img/logo_djid.png" alt="DJID" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-110" onerror="this.style.display='none'">
             
             <!-- Garis Pemisah -->
             <div class="w-px h-8 bg-white/20 hidden md:block"></div>
