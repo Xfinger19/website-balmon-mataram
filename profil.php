@@ -62,7 +62,7 @@
         <div class="flex justify-center mb-16" data-aos="zoom-in">
             <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-accent text-center w-full max-w-xs hover:-translate-y-2 transition duration-300 group">
                 <!-- Ganti foto dengan foto asli Kepala Balai jika ada -->
-                <img src="assets/img/struktur/kepala.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Kepala+Balai&background=0f172a&color=fff&size=150'" alt="Kepala Balai" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-slate-100 shadow-md group-hover:border-accent transition duration-300">
+                <img src="assets/img/kepala.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Kepala+Balai&background=0f172a&color=fff&size=150'" alt="Kepala Balai" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-slate-100 shadow-md group-hover:border-accent transition duration-300">
                 <h3 class="text-xl font-bold text-primary mt-4">Kepala Balai</h3>
                 <p class="text-sm text-slate-500 mt-1">Pimpinan Tertinggi UPT</p>
                 <div class="mt-4 inline-block bg-slate-100 text-slate-600 text-xs px-3 py-1 rounded-full font-semibold">Kepala Balmon SFR Kelas II</div>
