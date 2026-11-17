@@ -2,13 +2,40 @@
 
 {% block content %}
 <!-- Hero Section (Pengawal Spektrum) -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
-    <div class="absolute inset-0 opacity-10">
+<section class="relative h-screen flex items-center justify-center overflow-hidden bg-primary group/hero">
+    
+    <!-- ================= BACKGROUND SLIDER (TRANSPARAN + MANUAL) ================= -->
+    <div id="hero-bg-slider" class="absolute inset-0 z-0">
+        
+        <!-- FOTO 1 -->
+        <div class="hero-bg-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-30" style="background-image: url({{ url_for('static', filename='img/kepala.jpeg') }});"></div>
+        
+        <!-- FOTO 2 -->
+        <div class="hero-bg-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url({{ url_for('static', filename='img/logo_balmon.png') }});"></div>
+        
+        <!-- FOTO 3 -->
+        <div class="hero-bg-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url({{ url_for('static', filename='img/logo_komdigi.png') }});"></div>
+
+    </div>
+
+    <!-- Tombol Navigasi Geser Manual (Kiri & Kanan) -->
+    <button id="hero-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/20 hover:bg-black/50 text-white flex items-center justify-center backdrop-blur-sm transition-all duration-300 opacity-0 group-hover/hero:opacity-100 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button id="hero-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/20 hover:bg-black/50 text-white flex items-center justify-center backdrop-blur-sm transition-all duration-300 opacity-0 group-hover/hero:opacity-100 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <!-- ==================================================================== -->
+
+    <!-- Garis Lengkung SVG (Tetap dipertahankan) -->
+    <div class="absolute inset-0 opacity-10 z-0 pointer-events-none">
         <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M0 50 Q 25 20, 50 50 T 100 50" fill="none" stroke="white" stroke-width="0.5"/>
             <path d="M0 60 Q 25 30, 50 60 T 100 60" fill="none" stroke="white" stroke-width="0.5"/>
         </svg>
     </div>
+
+    <!-- Konten Teks -->
     <div class="relative z-10 text-center px-4 max-w-4xl" data-aos="fade-up">
         <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Pengawal <span class="text-gradient">Spektrum Digital</span> NTB
@@ -22,6 +49,97 @@
         </div>
     </div>
 </section>
+
+<!-- ================= SCRIPT BACKGROUND SLIDER (OTOMATIS & MANUAL) ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.hero-bg-slide');
+        const prevBtn = document.getElementById('hero-prev');
+        const nextBtn = document.getElementById('hero-next');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        // Fungsi untuk menampilkan gambar sesuai urutan (index)
+        function showSlide(index) {
+            // Sembunyikan semua gambar
+            slides.forEach(slide => {
+                slide.classList.remove('opacity-30');
+                slide.classList.add('opacity-0');
+            });
+
+            // Tampilkan gambar yang dipilih
+            slides[index].classList.remove('opacity-0');
+            slides[index].classList.add('opacity-30');
+        }
+
+        // Fungsi untuk gambar selanjutnya
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        // Fungsi untuk gambar sebelumnya
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        // Fungsi untuk memulai geser otomatis
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000); // 5000ms = 5 detik
+        }
+
+        // Fungsi untuk menghentikan geser otomatis (saat di-klik manual)
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event listener untuk tombol panah manual
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide(); // Hentikan otomatis sementara
+            nextSlide();
+            startAutoSlide(); // Jalankan kembali otomatis
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
+
+        // Dukungan Geser di layar sentuh (Swipe HP)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const heroSection = document.querySelector('.group/hero'); // Mengambil section Hero
+
+        heroSection.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, {passive: true});
+
+        heroSection.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoSlide();
+        }, {passive: true});
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) { // Geser ke kiri
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) { // Geser ke kanan
+                prevSlide();
+            }
+        }
+
+        // Jalankan otomatis saat halaman pertama kali dimuat
+        if (slides.length > 0) {
+            startAutoSlide();
+        }
+    });
+</script>
+<!-- ================================================================================== -->
 
 <!-- Section Galeri Instagram (Carousel 3 Kolom) -->
 <section class="relative py-24 bg-white overflow-hidden">
